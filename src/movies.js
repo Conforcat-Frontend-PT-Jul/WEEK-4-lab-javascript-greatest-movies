@@ -5,6 +5,16 @@ function getAllDirectors(moviesArray) {
     return moviesArray.map(movie => movie.director);
 }
 
+function getAllDirectorsNotDuplicated(moviesArray) {
+    const directorsList = [];
+    
+    moviesArray.forEach(movie => {
+        if (!directorsList.includes(movie.director)) directorsList.push(movie.director);
+    });
+    
+    return directorsList;
+}
+
 // Iteration 2: Steven Spielberg. The best? - How many drama movies did STEVEN SPIELBERG direct?
 function howManyMovies(moviesArray) {
     return moviesArray.filter(movie => movie.director === 'Steven Spielberg' && movie.genre.includes('Drama')).length;
@@ -51,14 +61,40 @@ function orderAsc(a, b) {
     return a.year - b.year;
 }
 function orderByYear(moviesArray) {
+
+    // DUDA 1/2:
+    // No entiendo muy bien lo de: "return a new array, not mutate the original one"
+    // a) ¿Para qué sirve?
+    // b) ¿Por qué así sí funcina?
+
     return [...moviesArray].sort(orderAsc);
 }
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
-function orderAlphabetically(moviesArray) {}
+function orderAlphabetically(moviesArray) {
+    return [...moviesArray].map(movie => movie.title).sort().slice(0, 20);
+}
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
-function turnHoursToMinutes(moviesArray) {}
+function turnHoursToMinutes(moviesArray) {
+
+    // DUDA 2/2:
+    // ¿Por qué así no funciona y antes sí?  -->  const durationMovies = [...moviesArray];
+
+    const durationMovies = JSON.parse(JSON.stringify(moviesArray));
+    
+    durationMovies.map(movie => {
+        const hours = Number(movie.duration.slice(0, movie.duration.indexOf('h'))) * 60;
+        const mins = Number(movie.duration.slice(movie.duration.indexOf(' '), movie.duration.indexOf('min')));
+        movie.duration = hours + mins;
+    });
+    
+    return durationMovies;
+}
 
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
-function bestYearAvg(moviesArray) {}
+function bestYearAvg(moviesArray) {
+    if (!moviesArray.length) return null;
+
+    
+}
