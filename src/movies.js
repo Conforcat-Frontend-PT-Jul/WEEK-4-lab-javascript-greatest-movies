@@ -107,7 +107,5 @@ function bestYearAvg(moviesArray) {
       bestYear = year;
     }
   }
-  return console.log(
-    `The best year was ${bestYear} with an average score of ${bestAvg}`
-  );
+  return `The best year was ${bestYear} with an average score of ${bestAvg}`;
 }
