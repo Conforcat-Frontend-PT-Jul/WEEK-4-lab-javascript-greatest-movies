@@ -96,5 +96,19 @@ function turnHoursToMinutes(moviesArray) {
 function bestYearAvg(moviesArray) {
     if (!moviesArray.length) return null;
 
+    const averageObj = {};
+
+    moviesArray.forEach(movie => {
+        if (Object.keys(averageObj).includes((movie.year).toString())) {
+            averageObj[movie.year] = (averageObj[movie.year] + movie.score)/2;
+        } else {
+            averageObj[movie.year] = movie.score;
+        }
+    });
+
+    const arr = Object.values(averageObj);
+    const rate = Math.max(...arr);
+    const year = Object.keys(averageObj).find(key => averageObj[key] === rate);
     
+    return `The best year was ${year} with an average score of ${rate}`;
 }
