@@ -72,7 +72,7 @@ function orderByYear(moviesArray) {
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
 function orderAlphabetically(moviesArray) {
-    return [...moviesArray].map(movie => movie.title).sort().slice(0, 20);
+    return moviesArray.map(movie => movie.title).sort().slice(0, 20);
 }
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
@@ -81,7 +81,13 @@ function turnHoursToMinutes(moviesArray) {
     // DUDA 2/2:
     // ¿Por qué así no funciona y antes sí?  -->  const durationMovies = [...moviesArray];
 
+
     const durationMovies = JSON.parse(JSON.stringify(moviesArray));
+    console.log("durationMovies")
+    console.log(durationMovies)
+    const durationMovies2 = [...moviesArray];
+    console.log("durationMovies2")
+    console.log(durationMovies2)
     
     durationMovies.map(movie => {
         const hours = Number(movie.duration.slice(0, movie.duration.indexOf('h'))) * 60;
