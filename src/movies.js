@@ -84,13 +84,7 @@ function turnHoursToMinutes(moviesArray) {
     // ¿Por qué así no funciona y antes sí?  -->  const durationMovies = [...moviesArray];
     //      -> Debería funcionar, está correcto. Debe ser algo de Jasmine
 
-
     const durationMovies = JSON.parse(JSON.stringify(moviesArray));
-    console.log("durationMovies")
-    console.log(durationMovies)
-    const durationMovies2 = [...moviesArray];
-    console.log("durationMovies2")
-    console.log(durationMovies2)
     
     durationMovies.map(movie => {
         const hours = Number(movie.duration.slice(0, movie.duration.indexOf('h'))) * 60;
