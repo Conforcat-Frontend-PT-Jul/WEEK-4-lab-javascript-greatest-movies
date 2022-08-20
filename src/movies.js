@@ -65,14 +65,16 @@ function orderByYear(moviesArray) {
     // DUDA 1/2:
     // No entiendo muy bien lo de: "return a new array, not mutate the original one"
     // a) ¿Para qué sirve?
-    // b) ¿Por qué así sí funcina?
+    //      -> Se usa para no modificar el array original y así no editarlo (puede que se necesite para otras cosas)
+    // b) ¿Por qué así sí funcina? [...moviesArray]
+    //      -> Porque eso justamente genera un nuevo array (al poner []) con los datos del array original (...moviesArray)
 
     return [...moviesArray].sort(orderAsc);
 }
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
 function orderAlphabetically(moviesArray) {
-    return [...moviesArray].map(movie => movie.title).sort().slice(0, 20);
+    return moviesArray.map(movie => movie.title).sort().slice(0, 20);
 }
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
@@ -80,6 +82,7 @@ function turnHoursToMinutes(moviesArray) {
 
     // DUDA 2/2:
     // ¿Por qué así no funciona y antes sí?  -->  const durationMovies = [...moviesArray];
+    //      -> Debería funcionar, está correcto. Debe ser algo de Jasmine
 
     const durationMovies = JSON.parse(JSON.stringify(moviesArray));
     
