@@ -62,12 +62,32 @@ return Number(res.toFixed(2));
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
 function orderByYear(moviesArray) {
+
+  const year = [];
+
+  moviesArray.forEach(element => {
+    year.push(element.year)});
+
+    return year;
     
 }
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
 function orderAlphabetically(moviesArray) {
-  
+  const movieTitle =[];
+  moviesArray.forEach(element => {movieTitle.push(element.title)});
+  return movieTitle;
+
+  title.sort((a, b) => {
+    if(a.title == b.title) {
+      return 0;
+    }else if (a.title < b.title) {
+      return -1;
+    }else{
+      return 1;
+    }
+  });
+    
 }
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
