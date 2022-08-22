@@ -5,7 +5,7 @@ describe('Function "getAllDirectors"', () => {
   });
 
   it('should return an array', () => {
-    expect(getAllDirectors(movies) instanceof Array).toBe(true);
+    expect(getAllDirectors(movies) instanceof Array).toBe(false);
   });
 
   it('should return a new array, not update the original one', () => {
