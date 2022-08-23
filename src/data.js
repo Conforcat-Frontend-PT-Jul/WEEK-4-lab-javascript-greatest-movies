@@ -1999,5 +1999,5 @@ const movies = [
     duration: '2h 8min',
     genre: ['Comedy', 'Drama'],
     score: 8
-  }
+  } 
 ];
