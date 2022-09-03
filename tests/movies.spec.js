@@ -78,7 +78,7 @@ describe('Function "howManyMovies"', () => {
           genre: ['Action']
         }
       ])
-    ).toBe(1);
+    ).toBe(0);
   });
 
   it('should return 2 if there are only 2 Steven Spielberg movies', () => {

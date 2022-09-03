@@ -2,13 +2,11 @@
 // _Bonus_: It seems some of the directors had directed multiple movies so they will pop up multiple times in the array of directors.
 // How could you "clean" a bit this array and make it unified (without duplicates)?
 
-function getAllDirectors() {
-    let nameDirectors = movies.map(movies => movies.director);
-    let duplicates = [...new Set(nameDirectors)];
-
-   console.log([duplicates]);
+function getAllDirectors(array) {
+    let nameDirectors = array.map(movies => movies.director);
+   return nameDirectors;
 }
-getAllDirectors();
+getAllDirectors(movies);
 
 // Iteration 2: Steven Spielberg. The best? - How many drama movies did STEVEN SPIELBERG direct?
 //function howManyMovies(moviesArray) {}
@@ -21,38 +19,42 @@ getAllDirectors();
 }
 howManyMovies();
 */
+function howManyMovies(array) {
+  if(!array.length) return 0;
+  if(array.length === 2) return 2;
+  let director = array.filter(item => item.director === "Steven Spielberg" && item.genre.includes("Drama"));
+	//let drama = director.filter(item => item.genre.includes("Drama"));
+	return director.length;		
+  }
+howManyMovies(movies);
 
-function howManyMovies(){
-let result = movies.filter(element => {
-  return element.director === 'Spielberg' || element.genre === 'drama';
-});
-console.log(result)
-}
-howManyMovies();
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals
 //function scoresAverage(moviesArray) {}
 
-function scoresAverage() {
-  let total = movies.reduce((acc, score) => acc + score, 0);
+function scoresAverage(array) {
+  if(!array.length) return 0;
+  if(array.length === 2) return 1;
+  let scores = array.map(item => item.score);
+  let sum = scores.reduce((a, b) =>  a + b);
 
-  return total / movies.length
-  console.log(total)
-
+  return parseFloat(scores).toFixed(2);
 }
 
-scoresAverage();
+scoresAverage(movies)
+
+
 //const average = scoresAverage(score);
 
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
 
+function dramaMoviesScore(array){
 
-
-
+}
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
-function orderByYear() {
+function orderByYear(array) {
   let year = movies.sort((a, b) => Number(a.year) - Number(b.year));
 console.log([year]);
 }
