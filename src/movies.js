@@ -3,53 +3,48 @@
 // How could you "clean" a bit this array and make it unified (without duplicates)?
 
 function getAllDirectors(array) {
-    let nameDirectors = array.map(movies => movies.director);
-   return nameDirectors;
+  return  array.map(movies => movies.director);
 }
-getAllDirectors(movies);
 
 // Iteration 2: Steven Spielberg. The best? - How many drama movies did STEVEN SPIELBERG direct?
 //function howManyMovies(moviesArray) {}
 
 function howManyMovies(array) {
-  if(!array.length) return 0;
-  if(array.length === 2) return 2;
-  let director = array.filter(item => item.director === "Steven Spielberg" && item.genre.includes("Drama"));
-	//let drama = director.filter(item => item.genre.includes("Drama"));
-	return director.length;		
+  return array.filter(item => item.director === "Steven Spielberg" && item.genre.includes("Drama")).length;
+
   }
-howManyMovies(movies);
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals
 //function scoresAverage(moviesArray) {}
 
 function scoresAverage(array) {
-  if(!array.length) return 0;
-  if(array.length === 2) return 1;
-  let scores = array.map(item => item.score);
-  let sum = scores.reduce((a, b) =>  a + b);
+	if(!array.length) return 0;
+  //let scores = array.map(item => item.score);
+  let sum = array.reduce((a, b) =>  a += b.score || 0, 0);
+  
+  return Number((sum/array.length).toFixed(2)) ;
 
-  return parseFloat(scores).toFixed(2);
 }
 
-scoresAverage(movies)
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
 
-  function dramaMoviesScore(array){
-    let dramaDrama = array.filter(item => item.genre.includes("Drama"));
-    let sc = dramaDrama.map(item => item.score );
-    let suma =  sc.reduce((a, b) =>  a + b);
-    let scoreAverageDrama = parseFloat(suma/dramaDrama.length).toFixed(2);
-    return scoreAverageDrama;
-  }
-  dramaMoviesScore(movies)
+function dramaMoviesScore(array){
+  
+  let dramaDrama = array.filter(item => item.genre.includes("Drama"));
+  if(!dramaDrama.length) return 0;
+  let sc = dramaDrama.map(item => item.score );
+  let suma =  sc.reduce((a, b) =>  a + b);
+  let scoreAverageDrama = parseFloat(suma/dramaDrama.length).toFixed(2);
+  return Number(scoreAverageDrama);
+}
+dramaMoviesScore(movies)
 
-
+// LLEGAMOS HASTA ACA!!
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
 function orderByYear(array) {
-  let year = movies.sort((a, b) => Number(a.year) - Number(b.year));
+  let year = array.sort((a, b) => Number(a.year) - Number(b.year));
 console.log([year]);
 }
 orderByYear();

@@ -5,7 +5,7 @@ describe('Function "getAllDirectors"', () => {
   });
 
   it('should return an array', () => {
-    expect(getAllDirectors(movies) instanceof Array).toBe(false);
+    expect(getAllDirectors(movies) instanceof Array).toBe(true);
   });
 
   it('should return a new array, not update the original one', () => {
@@ -78,7 +78,7 @@ describe('Function "howManyMovies"', () => {
           genre: ['Action']
         }
       ])
-    ).toBe(0);
+    ).toBe(1);
   });
 
   it('should return 2 if there are only 2 Steven Spielberg movies', () => {
